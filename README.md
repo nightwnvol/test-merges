@@ -5,3 +5,4 @@
 - feature 2 (v2)
 - feature 3 (v3)
 - feature 4 (v4)
+- feature 5 (v5)

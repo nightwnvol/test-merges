@@ -18,6 +18,6 @@ jobs:
           echo "VERSION=$(npm pkg get version | tr -d '"')" >> $GITHUB_OUTPUT
       - name: Create Relese
         env:
-          GITHUB_TOKEN: $[[ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh release create "v${{ steps.pkg_version.outputs.VERSION }}" --title "v${{ steps.pkg_version.outputs.VERSION }}" --generate-notes
