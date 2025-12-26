@@ -1,4 +1,4 @@
 # test-merges
 
 ## features
-- feature 1
+- feature 1 (v1)
