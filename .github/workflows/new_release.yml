@@ -15,14 +15,15 @@ jobs:
       - name: Get version from package.json
         id: pkg_version
         run: |
-          echo "VERSION=$(npm pkg get version | tr -d '"')" >> $GITHUB_OUTPUT
+            VERSION=$(jq -r '.version' package.json)
+            echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
       - name: Create Relese
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          VERSION="v${{ steps.pkg_version.outputs.VERSION }}"
-          if gh release view "$VERSION" >/dev/null 2>&1; then
-            echo "Release $VERSION already exists. Skipping."
-          else
-            gh release create "$VERSION" --title "$VERSION" --generate-notes
-          fi
+            VERSION="v${{ steps.pkg_version.outputs.VERSION }}"
+            if gh release view "$VERSION" >/dev/null 2>&1; then
+              echo "Release $VERSION already exists. Skipping."
+            else
+              gh release create "$VERSION" --title "$VERSION" --generate-notes
+            fi
