@@ -20,4 +20,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release create "v${{ steps.pkg_version.outputs.VERSION }}" --title "v${{ steps.pkg_version.outputs.VERSION }}" --generate-notes
+          VERSION="v${{ steps.pkg_version.outputs.VERSION }}"
+          if gh release view "$VERSION" >/dev/null 2>&1; then
+            echo "Release $VERSION already exists. Skipping."
+          else
+            gh release create "$VERSION" --title "$VERSION" --generate-notes
