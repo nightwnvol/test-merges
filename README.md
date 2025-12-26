@@ -7,3 +7,4 @@
 - feature 4 (v4)
 - feature 5 (v5)
 - feature 6 (v6)
+- feature 7
