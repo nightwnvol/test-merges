@@ -20,4 +20,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release create "v${{ steps.pkg_version.outputs.VERSION }}" --title "v${{ steps.pkg_version.outputs.VERSION }}" --generate-notes
+          gh release create "v${{ steps.pkg_version.outputs.VERSION }}" --title "v${{ steps.pkg_version.outputs.VERSION }}" --verify-tag --generate-notes
