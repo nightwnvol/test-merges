@@ -1,0 +1,22 @@
+name: Create Release
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Get version from package.json
+        id: pkg_version
+        run: echo "VERSION=$npm pkg get version | tr -d '"')" >> $GITHUB_OUTPUT
+      - name: Create Relese
+        env:
+          GITHUB_TOKEN: $[[ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "v${{ steps.pkg_version.outputs.VERSION }}" --title "v${{ steps.pkg_version.outputs.VERSION }}" --generate-notes
