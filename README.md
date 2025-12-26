@@ -9,4 +9,4 @@
 - feature 6 (v6)
 - feature 7 (v7)
 - feature 8 (v8)
-- feature 9
+- feature 9 (v9)
