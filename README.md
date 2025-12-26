@@ -8,4 +8,4 @@
 - feature 5 (v5)
 - feature 6 (v6)
 - feature 7 (v7)
-- feature 8
+- feature 8 (v8)
