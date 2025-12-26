@@ -14,7 +14,8 @@ jobs:
         uses: actions/checkout@v4
       - name: Get version from package.json
         id: pkg_version
-        run: echo "VERSION=$npm pkg get version | tr -d '"')" >> $GITHUB_OUTPUT
+        run: |
+          echo "VERSION=$(npm pkg get version | tr -d '"')" >> $GITHUB_OUTPUT
       - name: Create Relese
         env:
           GITHUB_TOKEN: $[[ secrets.GITHUB_TOKEN }}
